@@ -26,3 +26,11 @@
   bottom: 0;
   width: 100%;
 }
+
+.ant-card-body {
+  height: 120px;
+}
+
+.ant-skeleton-title {
+  margin-top: .5rem !important;
+}

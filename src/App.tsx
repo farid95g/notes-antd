@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Layout, Form, Input, Button, Row, Col } from 'antd'
-import './App.css'
+import { NoteList } from './components/NoteList'
+import { NotesContext } from './context/NotesContext/NoteContext'
 import 'antd/dist/antd.min.css'
+import './App.css'
 
 const { Header, Footer, Sider, Content } = Layout
 
 const App: React.FC = () => {
+  const notes = useContext(NotesContext)
+  const [loading, setLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2500);
+  })
+
   const onFinish = (values: any) => {
     console.log('Success:', values)
-  };
+  }
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
-  };
+  }
 
   return (
     <Layout>
@@ -63,6 +74,8 @@ const App: React.FC = () => {
               </Button>
             </Form.Item>
           </Form>
+
+          <NoteList notes={notes} loading={loading} />
         </Content>
       </Layout>
 
