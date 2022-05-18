@@ -15,3 +15,8 @@ export interface INoteProps {
     content: string
     loading: boolean
 }
+
+export interface ICreateNoteProps {
+    onFinish: (values: any) => void
+    onFinishFailed: (errorInfo: any) => void
+}
