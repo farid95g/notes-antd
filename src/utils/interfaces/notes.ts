@@ -17,6 +17,11 @@ export interface INoteProps {
 }
 
 export interface ICreateNoteProps {
-    onFinish: (values: any) => void
+    onFinish: (values: { title: string, content: string }) => void
     onFinishFailed: (errorInfo: any) => void
+}
+
+export interface INotesContext {
+    notes: INote[]
+    addNote: (note: INote) => void
 }
