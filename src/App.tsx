@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Layout, Form, Input, Button, Row, Col } from 'antd'
+import { FileDoneOutlined } from '@ant-design/icons'
 import { NoteList } from './components/NoteList'
 import { NotesContext } from './context/NotesContext/NoteContext'
 import 'antd/dist/antd.min.css'
@@ -38,29 +39,29 @@ const App: React.FC = () => {
 
         <Content>
           <Form
-            name="basic"
+            name='basic'
             wrapperCol={{ span: 24 }}
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            autoComplete="off"
+            autoComplete='off'
             layout='vertical'
           >
-            <Row gutter={[16, 24]}>
-              <Col span={12}>
+            <Row gutter={16}>
+              <Col xs={24} sm={12}>
                 <Form.Item
-                  label="Title"
-                  name="title"
+                  label='Title'
+                  name='title'
                   rules={[{ required: true, message: 'Please enter note title!' }]}
                 >
                   <Input placeholder='Note title' />
                 </Form.Item>
               </Col>
 
-              <Col span={12}>
+              <Col xs={24} sm={12}>
                 <Form.Item
-                  label="Content"
-                  name="content"
+                  label='Content'
+                  name='content'
                   rules={[{ required: true, message: 'Please enter ntoe content!' }]}
                 >
                   <Input placeholder='Note content' />
@@ -69,7 +70,7 @@ const App: React.FC = () => {
             </Row>
 
             <Form.Item wrapperCol={{ span: 24 }}>
-              <Button type="primary" htmlType="submit">
+              <Button type='primary' htmlType='submit' icon={<FileDoneOutlined />} className='create-note'>
                 Submit
               </Button>
             </Form.Item>
