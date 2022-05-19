@@ -23,5 +23,6 @@ export interface ICreateNoteProps {
 
 export interface INotesContext {
     notes: INote[]
-    addNote: (note: INote) => void
+    addNote: (note: INote) => void,
+    removeNote: (id: number) => void
 }

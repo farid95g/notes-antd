@@ -1,10 +1,10 @@
 import React from 'react'
-import { Form, Input, Button, Row, Col } from 'antd'
+import { Form, Input, Button, Row, Col, Tooltip } from 'antd'
 import { FileDoneOutlined } from '@ant-design/icons'
 import { ICreateNoteProps } from '../utils/interfaces/notes'
 
-export const CreateNote: React.FC<ICreateNoteProps> = ({ 
-    onFinish, 
+export const CreateNote: React.FC<ICreateNoteProps> = ({
+    onFinish,
     onFinishFailed
 }) => (
     <Form
@@ -39,9 +39,11 @@ export const CreateNote: React.FC<ICreateNoteProps> = ({
         </Row>
 
         <Form.Item wrapperCol={{ span: 24 }}>
-            <Button type='primary' htmlType='submit' icon={<FileDoneOutlined />} className='create-note'>
-                Submit
-            </Button>
+            <Tooltip title='Submit' placement='top'>
+                <Button type='primary' htmlType='submit' icon={<FileDoneOutlined />} className='create-note'>
+                    Submit
+                </Button>
+            </Tooltip>
         </Form.Item>
     </Form>
 )

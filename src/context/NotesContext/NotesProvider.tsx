@@ -2,7 +2,7 @@ import React, { Reducer, useReducer } from 'react'
 import { Notes } from '../../utils/enums/notes'
 import { INote, INotesContext } from '../../utils/interfaces/notes'
 import { NotesContext } from './NotesContext'
-import { notesReducer } from './NotesReducer'
+import { notesReducer } from './notesReducer'
 
 const notes: Array<INote> = [
     { id: 1, title: 'Note 1', content: 'Content 1 - lorem ipsum dolor set amet' },
@@ -13,14 +13,18 @@ const notes: Array<INote> = [
 export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
         notes: notes,
-        addNote: () => {}
+        addNote: () => {},
+        removeNote: () => {}
     })
 
     const addNote = (note: INote) => dispatch({ type: Notes.ADD_NOTE, payload: note })
 
+    const removeNote = (id: number) => dispatch({ type: Notes.REMOVE_NOTE, payload: id })
+
     const notesContext = {
         notes: state.notes,
-        addNote
+        addNote,
+        removeNote
     } as INotesContext
 
     return (

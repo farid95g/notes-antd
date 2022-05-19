@@ -5,7 +5,7 @@ import { INoteListProps, INote } from '../utils/interfaces/notes'
 
 export const NoteList: React.FC<INoteListProps> = ({ 
     notes, 
-    loading 
+    loading
 }) => (
     <Row gutter={[16, 24]}>
         {notes.map(({ id, title, content }: INote) => (
