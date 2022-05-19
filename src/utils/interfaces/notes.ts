@@ -1,5 +1,5 @@
 export interface INote {
-    id: number
+    id: string
     title: string
     content: string
 }
@@ -10,7 +10,7 @@ export interface INoteListProps {
 }
 
 export interface INoteProps {
-    id: number
+    id: string
     title: string
     content: string
     loading: boolean
@@ -24,5 +24,5 @@ export interface ICreateNoteProps {
 export interface INotesContext {
     notes: INote[]
     addNote: (note: INote) => void,
-    removeNote: (id: number) => void
+    removeNote: (id: string) => void
 }

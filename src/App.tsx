@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { CreateNote } from './components/CreateNote'
 import { NoteList } from './components/NoteList'
 import { NotesContext } from './context/NotesContext/NotesContext'
@@ -18,7 +19,7 @@ const App: React.FC = () => {
 
   const onFinish = (values: { title: string, content: string }) => {
     addNote({
-      id: 5,
+      id: uuidv4(),
       title: values.title,
       content: values.content
     })
