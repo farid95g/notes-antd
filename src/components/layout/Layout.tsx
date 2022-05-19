@@ -1,26 +1,26 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout as AntLayout } from 'antd'
 import { ILayoutProps } from '../../utils/interfaces/layout'
 
-const { Header, Footer, Sider, Content } = Layout
+const { Header, Footer, Sider, Content } = AntLayout
 
-export const AppLayout: React.FC<ILayoutProps> = ({ 
+export const Layout: React.FC<ILayoutProps> = ({ 
     children
  }) => (
-    <Layout>
+    <AntLayout>
         <Header>
             <div className='header'>
                 <h1>Notes Ant Design</h1>
             </div>
         </Header>
 
-        <Layout className='main'>
+        <AntLayout className='main'>
             {/* <Sider></Sider> */}
 
             <Content>
                 {children}
             </Content>
-        </Layout>
+        </AntLayout>
 
         <Footer>
             <div className='footer'>
@@ -28,5 +28,5 @@ export const AppLayout: React.FC<ILayoutProps> = ({
                 <strong>{new Date().getFullYear()}</strong>
             </div>
         </Footer>
-    </Layout>
+    </AntLayout>
 )

@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { CreateNote } from './components/CreateNote'
 import { NoteList } from './components/NoteList'
 import { NotesContext } from './context/NotesContext/NotesContext'
-import { AppLayout } from './components/layout/AppLayout'
+import { Layout } from './components/layout/Layout'
+import { Modal } from './components/Modal'
 import 'antd/dist/antd.min.css'
 import './App.css'
 
@@ -17,7 +18,7 @@ const App: React.FC = () => {
     }, 2500);
   }, [])
 
-  const onFinish = (values: { title: string, content: string }) => {
+  const onFinish = (values: { title: string, content: string }): void => {
     addNote({
       id: uuidv4(),
       title: values.title,
@@ -30,10 +31,12 @@ const App: React.FC = () => {
   }
 
   return (
-    <AppLayout>
+    <Layout>
       <CreateNote onFinish={onFinish} onFinishFailed={onFinishFailed} />
       <NoteList notes={notes} loading={loading} />
-    </AppLayout>
+
+      <Modal />
+    </Layout>
   )
 }
 

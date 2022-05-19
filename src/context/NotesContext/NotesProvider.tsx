@@ -13,7 +13,7 @@ const notes: Array<INote> = new Array(5).fill(undefined).map((_, i) => ({
 
 export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
-        notes: notes,
+        notes,
         addNote: () => {},
         removeNote: () => {}
     })
