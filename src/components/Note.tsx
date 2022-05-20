@@ -22,7 +22,10 @@ export const Note: React.FC<INoteProps> = ({
             <Card
                 style={{ width: '100%', marginTop: 16 }}
                 actions={[
-                    <EditOutlined key='edit' onClick={toggleModal.bind(null, Modal.SHOW_MODAL)} />,
+                    <EditOutlined 
+                        key='edit' 
+                        onClick={toggleModal.bind(null, Modal.SHOW_MODAL, { id, title, content })}
+                    />,
                     <DeleteOutlined key='delete' onClick={removeNote.bind(null, id)} />
                 ]}
             >
