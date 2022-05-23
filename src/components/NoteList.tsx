@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Row } from 'antd'
 import { Note } from './Note'
 import { INoteListProps, INote } from '../utils/interfaces/notes'
+import { NotesContext } from '../context/NotesContext/NotesContext'
 
-export const NoteList: React.FC<INoteListProps> = ({ 
-    notes, 
-    loading
-}) => (
-    <Row gutter={[16, 24]}>
-        {notes.map(({ id, title, content }: INote) => (
-            <Note key={id} id={id} title={title} content={content} loading={loading} />
-        ))}
-    </Row>
-)
+export const NoteList: React.FC<INoteListProps> = ({ loading }) => {
+    const { notes } = useContext(NotesContext)!
+
+    return (
+        <Row gutter={[16, 24]}>
+            {notes.map((props: INote) => (
+                <Note
+                    key={props.id}
+                    loading={loading}
+                    {...props}
+                />
+            ))}
+        </Row>
+    )
+}
