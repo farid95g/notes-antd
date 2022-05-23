@@ -8,23 +8,27 @@ import { notesReducer } from './notesReducer'
 const notes: Array<INote> = new Array(5).fill(undefined).map((_, i) => ({
     id: uuidv4(),
     title: `Note ${i + 1}`,
-    content: `Content ${i + 1} - lorem ipsum dolor set amet`
+    content: `Content ${i + 1} - Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.`
 }))
 
 export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
         notes,
         addNote: () => {},
+        updateNote: () => {},
         removeNote: () => {}
     })
 
     const addNote = (note: INote) => dispatch({ type: Notes.ADD_NOTE, payload: note })
+
+    const updateNote = (note: INote) => dispatch({ type: Notes.UPDATE_NOTE, payload: note })
 
     const removeNote = (id: string) => dispatch({ type: Notes.REMOVE_NOTE, payload: id })
 
     const notesContext = {
         notes: state.notes,
         addNote,
+        updateNote,
         removeNote
     } as INotesContext
 

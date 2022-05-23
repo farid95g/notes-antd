@@ -31,7 +31,21 @@
 }
 
 .ant-card-body {
-  height: 120px;
+  height: 125px;
+}
+
+.ant-card-meta {
+  height: 100%;
+  overflow: hidden;
+}
+
+.ant-card-meta-description {
+  height: 44px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .ant-skeleton-title {

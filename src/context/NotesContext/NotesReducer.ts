@@ -14,6 +14,19 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
             }
         }
 
+        case Notes.UPDATE_NOTE: {
+            console.log(payload)
+            return {
+                ...state,
+                notes: state.notes.map(note => {
+                    if (note.id === payload.id)
+                        return payload
+
+                    return note
+                })
+            }
+        }
+
         case Notes.REMOVE_NOTE: {
             return {
                 ...state,

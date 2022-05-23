@@ -17,6 +17,7 @@ export interface INoteProps {
 
 export interface INotesContext {
     notes: INote[]
-    addNote: (note: INote) => void,
+    addNote: (note: INote) => void
+    updateNote: (note: INote) => void
     removeNote: (id: string) => void
 }
