@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Skeleton, Card, Avatar, Col } from 'antd'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import { EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { INoteProps } from '../utils/interfaces/notes'
 import { NotesContext } from '../context/NotesContext/NotesContext'
 import { ModalContext } from '../context/ModalContext/ModalContext'
@@ -18,10 +18,11 @@ export const Note: React.FC<INoteProps> = ({
     const { toggleModal } = useContext(ModalContext)!
 
     return (
-        <Col xs={24} sm={24} md={8}>
+        <Col xs={24} sm={24} md={6}>
             <Card
                 style={{ width: '100%', marginTop: 16 }}
                 actions={[
+                    <EyeOutlined key='view' />,
                     <EditOutlined 
                         key='edit' 
                         onClick={toggleModal.bind(null, Modal.SHOW_MODAL, { id, title, content })}

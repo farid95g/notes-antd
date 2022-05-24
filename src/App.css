@@ -14,6 +14,12 @@
   justify-content: space-between;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* common styles */
 .mb-1 {
