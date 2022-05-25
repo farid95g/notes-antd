@@ -18,7 +18,7 @@ export const Note: React.FC<INoteProps> = ({
     const { toggleModal } = useContext(ModalContext)!
 
     return (
-        <Col xs={24} sm={24} md={6}>
+        <Col xs={24} sm={12} md={12} lg={6}>
             <Card
                 style={{ width: '100%', marginTop: 16 }}
                 actions={[

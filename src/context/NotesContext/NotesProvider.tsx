@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Notes } from '../../utils/enums/notes'
 import { INote, INotesContext } from '../../utils/interfaces/notes'
 import { NotesContext } from './NotesContext'
-import { notesReducer } from './noteReducer'
+import { notesReducer } from './notesReducer'
 
 const notes: Array<INote> = new Array(50).fill(undefined).map((_, i) => ({
     id: uuidv4(),

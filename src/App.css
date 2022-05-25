@@ -5,7 +5,7 @@
 }
 
 .main {
-  padding: 1.5rem 50px 94px 50px;
+  padding: 5.5rem 50px;
   min-height: calc(100vh - 134px);
 }
 
@@ -28,12 +28,19 @@
 
 
 /* override ant design styles */
-.ant-layout-footer {
+.ant-layout-header, .ant-layout-footer {
   position: fixed;
-  bottom: 0;
   width: 100%;
+  z-index: 2;
   background-color: #001529;
   color: #fff;
+}
+
+.ant-layout-header {
+  top: 0;
+}
+.ant-layout-footer {
+  bottom: 0;
 }
 
 .ant-card-body {
