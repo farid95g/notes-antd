@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { CreateNote } from './components/CreateNote'
-import { NoteList } from './components/NoteList'
+import { CreateNote } from './components/Note/CreateNote'
+import { NoteList } from './components/Note/NoteList'
 import { Layout } from './components/layout/Layout'
-import { Modal } from './components/Modal'
+import { Modal } from './components/common/Modal'
 import 'antd/dist/antd.min.css'
 import './App.css'
 

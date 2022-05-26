@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Row, Pagination, Col } from 'antd'
 import type { PaginationProps } from 'antd'
 import { Note } from './Note'
-import { INoteListProps, INote } from '../utils/interfaces/notes'
-import { NotesContext } from '../context/NotesContext/NotesContext'
+import { INoteListProps, INote } from '../../utils/interfaces/notes'
+import { NotesContext } from '../../context/NotesContext/NotesContext'
 
 export const NoteList: React.FC<INoteListProps> = ({ loading }) => {
     const { notes } = useContext(NotesContext)!
