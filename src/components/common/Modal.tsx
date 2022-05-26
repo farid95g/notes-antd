@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
-import { Modal as AntModal, Input, Form, Row, Col, Space } from 'antd'
+import { Modal as AntModal, Input, Form, Space } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { ModalContext } from '../../context/ModalContext/ModalContext'
 import { Modal as ModalEnum } from '../../utils/enums/modal'

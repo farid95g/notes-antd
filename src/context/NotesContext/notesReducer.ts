@@ -5,6 +5,13 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
     const { type, payload } = action
 
     switch (type) {
+        case Notes.FETCH_NOTES: {
+            return {
+                ...state,
+                notes: payload
+            }
+        }
+        
         case Notes.ADD_NOTE: {
             return {
                 ...state,

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CreateNote } from './components/Note/CreateNote'
 import { NoteList } from './components/Note/NoteList'
 import { Layout } from './components/layout/Layout'
