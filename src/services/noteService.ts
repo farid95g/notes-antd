@@ -1,12 +1,18 @@
-import axios from "axios"
+import { mainService } from "./config"
+import { INote } from "../utils/interfaces/notes"
 
-export const getNotes = () => {
-    return axios
-        .get('https://notes-antd-default-rtdb.firebaseio.com/notes.json')
-        .then(({ data }) => {
-            return Object.keys(data).map(key => ({
-                ...data[key],
-                id: key
-            }))
-        })
+export const noteService = {
+    getNotes: () => {
+        return mainService
+            .get('/notes.json')
+            .then(response => Object.keys(response.data).map(key => ({
+                id: key,
+                ...response.data[key]
+            })))
+    },
+    addNote: (note: INote) => {
+        return mainService
+            .post('/notes.json', note)
+            .then(response => response)
+    }
 }

@@ -1,6 +1,6 @@
 import React, { Reducer, useEffect, useReducer } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { getNotes } from '../../services/noteService'
+import { noteService } from '../../services/noteService'
 import { Notes } from '../../utils/enums/notes'
 import { INote, INotesContext } from '../../utils/interfaces/notes'
 import { NotesContext } from './NotesContext'
@@ -21,11 +21,14 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     })
 
     useEffect(() => {
-        getNotes()
+        noteService.getNotes()
             .then(payload => dispatch({ type: Notes.FETCH_NOTES, payload }))
     }, [])
 
-    const addNote = (note: INote) => dispatch({ type: Notes.ADD_NOTE, payload: note })
+    const addNote = (note: INote) => {
+        noteService.addNote(note)
+            .then(() => dispatch({ type: Notes.ADD_NOTE, payload: note }))
+    }
 
     const updateNote = (note: INote) => dispatch({ type: Notes.UPDATE_NOTE, payload: note })
 
