@@ -20,10 +20,13 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
 
     const addNote = (note: INote) => {
         noteService.add(note)
-            .then((payload) => dispatch({ type: Notes.ADD, payload: { ...note, id: payload.data.name } }))
+            .then((data) => dispatch({ type: Notes.ADD, payload: { ...note, id: data.name } }))
     }
 
-    const updateNote = (note: INote) => dispatch({ type: Notes.UPDATE, payload: note })
+    const updateNote = (note: INote) => {
+        noteService.update(note)
+            .then((payload) => dispatch({ type: Notes.UPDATE, payload }))
+    }
 
     const removeNote = (id: string) => {
         noteService.delete(id)

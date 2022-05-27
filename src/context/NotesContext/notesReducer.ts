@@ -22,7 +22,6 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
         }
 
         case Notes.UPDATE: {
-            console.log(payload)
             return {
                 ...state,
                 notes: state.notes.map(note => {

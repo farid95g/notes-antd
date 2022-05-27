@@ -10,14 +10,19 @@ export const noteService = {
                 ...response.data[key]
             })))
     },
+
     add: (note: INote) => {
         return mainService
             .post('/notes.json', note)
-            .then(response => response)
+            .then(response => response.data)
     },
-    update: (note: INote) => {
 
+    update: (note: INote) => {
+        return mainService
+            .put(`/notes/${note.id}.json`, note)
+            .then(response => response.data)
     },
+    
     delete: (id: string) => {
         return mainService
             .delete(`/notes/${id}.json`)
