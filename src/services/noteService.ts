@@ -2,7 +2,7 @@ import { mainService } from "./config"
 import { INote } from "../utils/interfaces/notes"
 
 export const noteService = {
-    getNotes: () => {
+    getAll: () => {
         return mainService
             .get('/notes.json')
             .then(response => Object.keys(response.data).map(key => ({
@@ -10,9 +10,17 @@ export const noteService = {
                 ...response.data[key]
             })))
     },
-    addNote: (note: INote) => {
+    add: (note: INote) => {
         return mainService
             .post('/notes.json', note)
+            .then(response => response)
+    },
+    update: (note: INote) => {
+
+    },
+    delete: (id: string) => {
+        return mainService
+            .delete(`/notes/${id}.json`)
             .then(response => response)
     }
 }

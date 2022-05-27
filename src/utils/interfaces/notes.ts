@@ -1,5 +1,5 @@
 export interface INote {
-    id: string
+    id?: string
     title: string
     content: string
 }
@@ -9,7 +9,7 @@ export interface INoteListProps {
 }
 
 export interface INoteProps {
-    id: string
+    id?: string
     title: string
     content: string
     loading: boolean

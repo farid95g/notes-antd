@@ -31,7 +31,7 @@ export const Note: React.FC<INoteProps> = ({
                     <Confirm
                         question='Are you sure to delete this task?'
                         cb={removeNote}
-                        id={id}
+                        id={id ?? ''}
                         notification='Note Deleted.'
                     >
                         <DeleteOutlined key='delete' />

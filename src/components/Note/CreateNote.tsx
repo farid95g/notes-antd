@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import { Form, Input, Button, Row, Col, Tooltip } from 'antd'
 import { FileDoneOutlined } from '@ant-design/icons'
 import { NotesContext } from '../../context/NotesContext/NotesContext'
@@ -11,7 +10,6 @@ export const CreateNote: React.FC = () => {
 
     const onFinish = (values: { title: string, content: string }): void => {
         addNote({
-            id: uuidv4(),
             title: values.title,
             content: values.content
         })

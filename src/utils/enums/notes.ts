@@ -1,6 +1,6 @@
 export enum Notes {
-    FETCH_NOTES = 'FETCH_NOTES',
-    ADD_NOTE = 'ADD_NOTE',
-    REMOVE_NOTE = 'REMOVE_NOTE',
-    UPDATE_NOTE = 'UPDATE_NOTE'
+    GET_ALL = 'GET_ALL',
+    ADD = 'ADD',
+    UPDATE = 'UPDATE',
+    DELETE = 'DELETE'
 }

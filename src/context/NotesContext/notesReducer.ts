@@ -5,14 +5,14 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
     const { type, payload } = action
 
     switch (type) {
-        case Notes.FETCH_NOTES: {
+        case Notes.GET_ALL: {
             return {
                 ...state,
                 notes: payload
             }
         }
         
-        case Notes.ADD_NOTE: {
+        case Notes.ADD: {
             return {
                 ...state,
                 notes: [
@@ -21,7 +21,7 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
             }
         }
 
-        case Notes.UPDATE_NOTE: {
+        case Notes.UPDATE: {
             console.log(payload)
             return {
                 ...state,
@@ -34,7 +34,7 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
             }
         }
 
-        case Notes.REMOVE_NOTE: {
+        case Notes.DELETE: {
             return {
                 ...state,
                 notes: state.notes.filter(note => note.id !== payload)

@@ -1,16 +1,9 @@
 import React, { Reducer, useEffect, useReducer } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import { noteService } from '../../services/noteService'
 import { Notes } from '../../utils/enums/notes'
 import { INote, INotesContext } from '../../utils/interfaces/notes'
 import { NotesContext } from './NotesContext'
 import { notesReducer } from './notesReducer'
-
-// const notes: Array<INote> = new Array(50).fill(undefined).map((_, i) => ({
-//     id: uuidv4(),
-//     title: `Note ${i + 1}`,
-//     content: `Content ${i + 1} - Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.`
-// }))
 
 export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
@@ -21,18 +14,21 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     })
 
     useEffect(() => {
-        noteService.getNotes()
-            .then(payload => dispatch({ type: Notes.FETCH_NOTES, payload }))
+        noteService.getAll()
+            .then(payload => dispatch({ type: Notes.GET_ALL, payload }))
     }, [])
 
     const addNote = (note: INote) => {
-        noteService.addNote(note)
-            .then(() => dispatch({ type: Notes.ADD_NOTE, payload: note }))
+        noteService.add(note)
+            .then((payload) => dispatch({ type: Notes.ADD, payload: { ...note, id: payload.data.name } }))
     }
 
-    const updateNote = (note: INote) => dispatch({ type: Notes.UPDATE_NOTE, payload: note })
+    const updateNote = (note: INote) => dispatch({ type: Notes.UPDATE, payload: note })
 
-    const removeNote = (id: string) => dispatch({ type: Notes.REMOVE_NOTE, payload: id })
+    const removeNote = (id: string) => {
+        noteService.delete(id)
+            .then(() => dispatch({ type: Notes.DELETE, payload: id }))
+    }
 
     const notesContext = {
         notes: state.notes,
