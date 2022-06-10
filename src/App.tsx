@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CreateNote } from './components/Note/CreateNote'
 import { NoteList } from './components/Note/NoteList'
-import { Layout } from './components/layout/Layout'
+import { Layout } from './components/layout'
 import { Modal } from './components/common/Modal'
 import 'antd/dist/antd.min.css'
 import './App.css'

@@ -1,4 +1,9 @@
 /* layout styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .header h1 {
   margin-bottom: 0;
   color: #fff;
