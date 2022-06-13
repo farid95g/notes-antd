@@ -5,6 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { NotesProvider } from './context/NotesContext/NotesProvider'
 import { ModalProvider } from './context/ModalContext/ModalProvider'
+import { ThemeProvider } from './context/ThemeContext/ThemeProvider'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ModalProvider>
-      <NotesProvider>
-        <App />
-      </NotesProvider>
-    </ModalProvider>
+    <ThemeProvider>
+      <ModalProvider>
+        <NotesProvider>
+          <App />
+        </NotesProvider>
+      </ModalProvider>
+    </ThemeProvider>
   </React.StrictMode>
 )
 

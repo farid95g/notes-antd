@@ -1,3 +1,41 @@
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+
+/* light and dark mode colors */
+:root {
+  /* background colors */
+  --primary-bg: #fff;
+  --secondary-bg: #a72693;
+  --input-bg: #fff;
+  --card-bg: #fff;
+  --avatar: #a72693;
+
+  /* font colors */
+  --primary-font: rgba(0, 0, 0, .85);
+  --secondary-font: #fff;
+}
+
+[data-theme='dark'] {
+  /* background colors */
+  --primary-bg: #252525;
+  --secondary-bg: #202040;
+  --input-bg: transparent;
+  --card-bg: #202040;
+  --avatar: #fff;
+
+  /* font colors */
+  --primary-font: #fff;
+  --secondary-font: #fff;
+}
+
+
+/* common styles */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
 /* layout styles */
 .header {
   display: flex;
@@ -6,17 +44,19 @@
 
 .header h1 {
   margin-bottom: 0;
-  color: #fff;
+  color: var(--primary-font);
 }
 
 .main {
   padding: 5.5rem 50px;
   min-height: calc(100vh - 134px);
+  margin-top: 64px;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
+  color: var(--primary-font);
 }
 
 .pagination {
@@ -33,11 +73,15 @@
 
 
 /* override ant design styles */
+.ant-layout {
+  background-color: var(--primary-bg);
+}
+
 .ant-layout-header, .ant-layout-footer {
   position: fixed;
   width: 100%;
   z-index: 2;
-  background-color: #001529;
+  background-color: var(--secondary-bg);
   color: #fff;
 }
 
@@ -68,6 +112,63 @@
 
 .ant-skeleton-title {
   margin-top: .5rem !important;
+}
+
+.ant-switch {
+  background-image: none;
+  background-color: var(--primary-bg);
+}
+
+.ant-switch-checked {
+  background-color: #EAB9C9;
+}
+
+.ant-switch-checked:focus {
+  box-shadow: none;
+}
+
+.ant-switch-inner {
+  color: rgba(0, 0, 0, .85);
+  font-weight: 500;
+}
+
+.ant-form-item-label > label {
+  color: var(--primary-font);
+}
+
+.ant-input, .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: var(--input-bg);
+}
+
+.ant-card, .ant-card-actions {
+  background-color: var(--card-bg);
+}
+
+.ant-card-meta-title, .ant-card-meta-description,
+.ant-select, .ant-select-arrow,
+.ant-card-actions > li > span > .anticon, .ant-card-actions > li > span a:not(.ant-btn) {
+  color: var(--primary-font);
+}
+
+.ant-pagination li,
+.ant-pagination-next .ant-pagination-item-link, .ant-pagination-prev .ant-pagination-item-link {
+  background-color: var(--input-bg);
+  color: var(--primary-font);
+}
+
+.ant-pagination-item:not(.ant-pagination-item-active) a {
+  color: var(--primary-font);
+}
+
+.ant-avatar {
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+}
+
+.ant-avatar > img {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 var(--avatar);
 }
 
 

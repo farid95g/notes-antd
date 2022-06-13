@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CreateNote } from './components/Note/CreateNote'
 import { NoteList } from './components/Note/NoteList'
 import { Layout } from './components/layout'
 import { Modal } from './components/common/Modal'
 import 'antd/dist/antd.min.css'
 import './App.css'
+import { ThemeContext } from './context/ThemeContext/ThemeContext'
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
+  const { theme } = useContext(ThemeContext)!
 
   useEffect(() => {
     setTimeout(() => {
