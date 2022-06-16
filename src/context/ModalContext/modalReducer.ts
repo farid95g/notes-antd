@@ -2,15 +2,22 @@ import { IModalContext } from '../../utils/interfaces/modal'
 import { Modal } from '../../utils/enums/modal'
 import { INote } from '../../utils/interfaces/notes'
 
-export const modalReducer = (state: IModalContext, action: { type: string, selectedNote?: INote }): IModalContext => {
-    const { type, selectedNote } = action
+export const modalReducer = (state: IModalContext, action: { type: string, payload?: INote | string }): IModalContext => {
+    const { type, payload } = action
 
     switch (type) {
         case Modal.SHOW_MODAL: {
             return {
                 ...state,
                 visibility: true,
-                selectedNote
+                status: payload as string
+            }
+        }
+
+        case Modal.SET_SELECTED_NOTE: {
+            return {
+                ...state,
+                selectedNote: payload as INote
             }
         }
         
@@ -18,7 +25,8 @@ export const modalReducer = (state: IModalContext, action: { type: string, selec
             return {
                 ...state,
                 visibility: false,
-                selectedNote
+                status: undefined,
+                selectedNote: undefined
             }
         }
 

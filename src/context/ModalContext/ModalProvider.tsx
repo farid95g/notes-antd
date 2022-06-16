@@ -8,15 +8,21 @@ export const ModalProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<IModalContext, any>>(modalReducer, {
         visibility: false,
         selectedNote: undefined,
-        toggleModal: () => {}
+        status: undefined,
+        toggleModal: () => {},
+        setSelectedNote: () => {}
     })
+
+    const toggleModal = (type: string, payload: string) => dispatch({ type, payload })
     
-    const toggleModal = (type: string, selectedNote?: INote) => dispatch({ type, selectedNote })
+    const setSelectedNote = (type: string, payload?: INote) => dispatch({ type, payload })
 
     const modalContext = {
         visibility: state.visibility,
         selectedNote: state.selectedNote,
-        toggleModal
+        status: state.status,
+        toggleModal,
+        setSelectedNote
     } as IModalContext
 
     return (
