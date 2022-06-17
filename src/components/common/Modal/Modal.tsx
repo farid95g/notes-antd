@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext } from 'react'
 import { Modal as AntModal, Input, Form, Space } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { ModalContext } from '../../../context/ModalContext/ModalContext'
@@ -9,35 +9,27 @@ import { Edit } from './Edit'
 export const Modal: React.FC = () => {
     const { visibility, selectedNote, toggleModal, status } = useContext(ModalContext)!
     const { updateNote } = useContext(NotesContext)!
-    const [modified, setModified] = useState<Boolean>(false)
-    const form = useRef<any>()
+    const [form] = Form.useForm()
 
     const onFinish = (values: { title: string, content: string }): void => {
         const { title, content } = values
-        const isChanged = title.trim() !== selectedNote?.title || content.trim() !== selectedNote?.content
 
-        if (!isChanged) {
-            return
+        if (form.isFieldsTouched()) {
+            updateNote({
+                id: selectedNote!.id,
+                title: title,
+                content: content
+            })
         }
-
-        updateNote({
-            id: selectedNote!.id,
-            title: title,
-            content: content
-        })
     }
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo)
     }
 
-    const onValuesChange = () => {
-        setModified(true)
-    }
-
     const okHandler = () => {
-        if (modified) {
-            form.current.submit()
+        if (form.isFieldsTouched()) {
+            form.submit()
         }
 
         toggleModal(ModalEnum.HIDE_MODAL)
@@ -77,8 +69,7 @@ export const Modal: React.FC = () => {
                             }}
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
-                            onValuesChange={onValuesChange}
-                            ref={form}
+                            form={form}
                         >
                             <Form.Item
                                 name='title'
