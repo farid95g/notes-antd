@@ -5,10 +5,12 @@ export const Edit: React.FC<IEditProps> = ({
     title,
     content
 }) => {
+    const formattedContent = content[0].toUpperCase() + content.slice(1)
+
     return (
-        <div>
-            <h3>{title}</h3>
-            <p>{content}</p>
+        <div className='note'>
+            <h2>{title}</h2>
+            <p>{formattedContent}</p>
         </div>
     )
 }

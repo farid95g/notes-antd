@@ -1,5 +1,5 @@
 /* import font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap');
 
 
 /* light and dark mode colors */
@@ -39,7 +39,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 
@@ -76,6 +76,11 @@ body {
 /* common styles */
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.note h2 {
+  text-decoration: underline;
+  text-transform: capitalize;
 }
 
 
