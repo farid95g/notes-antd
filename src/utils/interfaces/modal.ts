@@ -12,3 +12,10 @@ export interface IEditProps {
     title: string
     content: string
 }
+
+export interface IViewProps {
+    selectedNote: INote
+    formRef: any
+    onFinish: (values: { title: string, content: string }) => void
+    onFinishFailed: (errorInfo: any) => void
+}
