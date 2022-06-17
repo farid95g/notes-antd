@@ -6,7 +6,7 @@ import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
 const { Option } = Select
 
 export const Header: React.FC = () => {
-    const { setTheme } = useContext(ThemeContext)!
+    const { theme, setTheme } = useContext(ThemeContext)!
 
     const handleLanguageSelection = (value: string) => {
         console.log(`selected ${value}`)
@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
                         <Switch
                             checkedChildren='Light'
                             unCheckedChildren='Dark'
-                            defaultChecked={false}
+                            checked={theme === 'dark' ? true : false}
                             style={{ width: '4.2rem' }}
                             onChange={value => onThemeChange(value)}
                         />
