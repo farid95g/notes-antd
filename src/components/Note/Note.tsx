@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { Skeleton, Card, Avatar, Col } from 'antd'
 import { EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import { INoteProps } from '../../utils/interfaces/notes'
-import { NotesContext } from '../../context/NotesContext/NotesContext'
-import { ModalContext } from '../../context/ModalContext/ModalContext'
-import { Modal, ModalStatus } from '../../utils/enums/modal'
-import { Confirm } from '../common/Confirm'
+import { INoteProps } from 'utils/interfaces/notes'
+import { NotesContext } from 'context/NotesContext/NotesContext'
+import { ModalContext } from 'context/ModalContext/ModalContext'
+import { Modal, ModalStatus } from 'utils/enums/modal'
+import { Confirm } from 'components/common/Confirm'
 
 const { Meta } = Card
 

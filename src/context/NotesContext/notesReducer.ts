@@ -1,5 +1,5 @@
-import { INotesContext } from '../../utils/interfaces/notes'
-import { Notes } from '../../utils/enums/notes'
+import { INotesContext } from 'utils/interfaces/notes'
+import { Notes } from 'utils/enums/notes'
 
 export const notesReducer = (state: INotesContext, action: { type: string, payload: any }): INotesContext => {
     const { type, payload } = action

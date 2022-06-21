@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input, Form } from 'antd'
-import { IViewProps } from '../../../utils/interfaces/modal'
+import { IViewProps } from 'utils/interfaces/modal'
 
 export const View: React.FC<IViewProps> = ({
     selectedNote,

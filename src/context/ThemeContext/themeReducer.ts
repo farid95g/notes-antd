@@ -1,5 +1,5 @@
-import { Theme } from '../../utils/enums/theme'
-import { IThemeContext } from '../../utils/interfaces/theme'
+import { Theme } from 'utils/enums/theme'
+import { IThemeContext } from 'utils/interfaces/theme'
 
 export const themeReducer = (state: IThemeContext, action: { type: string, payload: string }): IThemeContext => {
     const { type, payload } = action

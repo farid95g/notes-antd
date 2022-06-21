@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Header as AntHeader } from 'antd/lib/layout/layout'
 import { Row, Col, Select, Space, Switch } from 'antd'
-import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
+import { ThemeContext } from 'context/ThemeContext/ThemeContext'
 
 const { Option } = Select
 

@@ -1,9 +1,9 @@
 import React, { Reducer, useReducer } from 'react'
-import { ThemeContext } from './ThemeContext'
-import { IThemeContext } from '../../utils/interfaces/theme'
-import { themeReducer } from './themeReducer'
-import { Theme } from '../../utils/enums/theme'
-import { localStorageService as ls } from '../../services/localStorageService'
+import { ThemeContext } from 'context/ThemeContext/ThemeContext'
+import { IThemeContext } from 'utils/interfaces/theme'
+import { themeReducer } from 'context/ThemeContext/themeReducer'
+import { Theme } from 'utils/enums/theme'
+import { localStorageService as ls } from 'services/localStorageService'
 
 export const ThemeProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<IThemeContext, any>>(themeReducer, {

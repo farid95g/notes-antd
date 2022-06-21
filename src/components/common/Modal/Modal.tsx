@@ -1,16 +1,18 @@
 import React, { useContext, useEffect } from 'react'
 import { Modal as AntModal, Form, Space } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
-import { ModalContext } from '../../../context/ModalContext/ModalContext'
-import { Modal as ModalEnum, ModalStatus } from '../../../utils/enums/modal'
-import { NotesContext } from '../../../context/NotesContext/NotesContext'
-import { Edit } from './Edit'
-import { View } from './View'
-import { INote } from '../../../utils/interfaces/notes'
+import { ModalContext } from 'context/ModalContext/ModalContext'
+import { Modal as ModalEnum, ModalStatus } from 'utils/enums/modal'
+import { NotesContext } from 'context/NotesContext/NotesContext'
+import { Edit } from 'components/common/Modal/Edit'
+import { View } from 'components/common/Modal/View'
+import { INote } from 'utils/interfaces/notes'
+import { ThemeContext } from 'context/ThemeContext/ThemeContext'
 
 export const Modal: React.FC = () => {
     const { visibility, selectedNote, toggleModal, status } = useContext(ModalContext)!
     const { updateNote } = useContext(NotesContext)!
+    const { theme } = useContext(ThemeContext)!
     const [form] = Form.useForm()
 
     useEffect(() => {
@@ -64,6 +66,7 @@ export const Modal: React.FC = () => {
                 onCancel={cancelHandler}
                 destroyOnClose={true}
                 forceRender
+                data-theme={theme}
             >
                 {
                     status === ModalStatus.VIEW

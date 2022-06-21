@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
-import { NotesProvider } from './context/NotesContext/NotesProvider'
-import { ModalProvider } from './context/ModalContext/ModalProvider'
-import { ThemeProvider } from './context/ThemeContext/ThemeProvider'
+import 'index.css'
+import App from 'App'
+import reportWebVitals from 'reportWebVitals'
+import { NotesProvider } from 'context/NotesContext/NotesProvider'
+import { ModalProvider } from 'context/ModalContext/ModalProvider'
+import { ThemeProvider } from 'context/ThemeContext/ThemeProvider'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

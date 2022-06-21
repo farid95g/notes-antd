@@ -1,6 +1,6 @@
-import { IModalContext } from '../../utils/interfaces/modal'
-import { Modal } from '../../utils/enums/modal'
-import { INote } from '../../utils/interfaces/notes'
+import { IModalContext } from 'utils/interfaces/modal'
+import { Modal } from 'utils/enums/modal'
+import { INote } from 'utils/interfaces/notes'
 
 export const modalReducer = (state: IModalContext, action: { type: string, payload?: INote | string }): IModalContext => {
     const { type, payload } = action

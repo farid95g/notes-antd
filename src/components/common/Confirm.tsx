@@ -1,6 +1,6 @@
 import React from 'react'
 import { Popconfirm, message } from 'antd'
-import { IConfirm } from '../../utils/interfaces/confirm'
+import { IConfirm } from 'utils/interfaces/confirm'
 
 const confirm = (cb: (id: string) => void, id: string, notification: string) => {
     message.success(notification)

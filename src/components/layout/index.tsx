@@ -1,8 +1,8 @@
 import React from 'react'
 import { Layout as AntLayout } from 'antd'
-import { ILayoutProps } from '../../utils/interfaces/layout'
-import { Header } from './Header'
-import { Footer } from './Footer'
+import { ILayoutProps } from 'utils/interfaces/layout'
+import { Header } from 'components/layout/Header'
+import { Footer } from 'components/layout/Footer'
 
 const { Content } = AntLayout
 

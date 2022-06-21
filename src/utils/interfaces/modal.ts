@@ -1,4 +1,4 @@
-import { INote } from "./notes"
+import { INote } from "utils/interfaces/notes"
 
 export interface IModalContext {
     visibility: boolean

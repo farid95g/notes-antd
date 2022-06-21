@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Form, Input, Button, Row, Col, Tooltip } from 'antd'
 import { FileDoneOutlined } from '@ant-design/icons'
-import { NotesContext } from '../../context/NotesContext/NotesContext'
+import { NotesContext } from 'context/NotesContext/NotesContext'
 import { useForm } from 'antd/lib/form/Form'
 
 export const CreateNote: React.FC = () => {

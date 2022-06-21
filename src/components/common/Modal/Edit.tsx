@@ -1,5 +1,5 @@
 import React from 'react'
-import { IEditProps } from '../../../utils/interfaces/modal'
+import { IEditProps } from 'utils/interfaces/modal'
 
 export const Edit: React.FC<IEditProps> = ({
     title,

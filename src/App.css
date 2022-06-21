@@ -185,6 +185,11 @@ body {
   box-shadow: 0 0 5px 0 var(--avatar);
 }
 
+.ant-modal-content, .ant-modal-header {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-font);
+}
+
 /* remove transition from ant design icons */
 .ant-card-actions .anticon svg, .ant-card-actions span a:not(.ant-btn) svg,
 .ant-card-actions .anticon svg path, .ant-card-actions span a:not(.ant-btn) svg path,

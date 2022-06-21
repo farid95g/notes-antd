@@ -1,5 +1,5 @@
-import { mainService } from './config'
-import { INote } from '../utils/interfaces/notes'
+import { mainService } from 'services/config'
+import { INote } from 'utils/interfaces/notes'
 
 export const noteService = {
     getAll: () => {
