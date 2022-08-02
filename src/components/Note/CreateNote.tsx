@@ -11,7 +11,8 @@ export const CreateNote: React.FC = () => {
     const onFinish = (values: { title: string, content: string }): void => {
         addNote({
             title: values.title,
-            content: values.content
+            content: values.content,
+            id: Math.random().toString()
         })
 
         form.resetFields()

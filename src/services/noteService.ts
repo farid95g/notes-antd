@@ -4,28 +4,25 @@ import { INote } from 'utils/interfaces/notes'
 export const noteService = {
     getAll: () => {
         return mainService
-            .get('/notes.json')
-            .then(response => Object.keys(response.data).map(key => ({
-                id: key,
-                ...response.data[key]
-            })))
+            .get('/notes')
+            .then(response => response.data)
     },
 
     add: (note: INote) => {
         return mainService
-            .post('/notes.json', note)
+            .post('/notes', note)
             .then(response => response.data)
     },
 
     update: (note: INote) => {
         return mainService
-            .put(`/notes/${note.id}.json`, note)
+            .put(`/notes/${note.id}`, note)
             .then(response => response.data)
     },
     
     delete: (id: string) => {
         return mainService
-            .delete(`/notes/${id}.json`)
+            .delete(`/notes/${id}`)
             .then(response => response)
     }
 }
