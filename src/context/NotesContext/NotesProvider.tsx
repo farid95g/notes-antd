@@ -19,7 +19,13 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
 
     const getAllNotes = (page: number) => {
         noteService.getAll(page)
-            .then(payload => dispatch({ type: Notes.GET_ALL, payload }))
+            .then(payload => {
+                if (payload.notes.length) {
+                    dispatch({ type: Notes.GET_ALL, payload })
+                } else {
+                    setCurrentPage(state.currentPage - 1)
+                }
+            })
     }
 
     const addNote = (note: INote) => {
@@ -38,6 +44,9 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     const removeNote = (id: string) => {
         noteService.delete(id)
             .then(() => dispatch({ type: Notes.DELETE, payload: id }))
+            .then(() => {
+                getAllNotes(state.currentPage)
+            })
     }
 
     const setCurrentPage = (page: number) => {
