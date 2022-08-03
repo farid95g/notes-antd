@@ -9,10 +9,12 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
         notes: [],
         total: undefined,
+        currentPage: 1,
         getAllNotes: () => {},
         addNote: () => {},
         updateNote: () => {},
-        removeNote: () => {}
+        removeNote: () => {},
+        setCurrentPage: () => {}
     })
 
     const getAllNotes = (page: number) => {
@@ -35,13 +37,23 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
             .then(() => dispatch({ type: Notes.DELETE, payload: id }))
     }
 
+    const setCurrentPage = (page: number) => {
+        noteService.getAll(page)
+            .then(payload => {
+                dispatch({ type: Notes.GET_ALL, payload })
+                dispatch({ type: Notes.SET_CURRENT_PAGE, payload: page })
+            })
+    }
+
     const notesContext = {
         notes: state.notes,
         total: state.total,
+        currentPage: state.currentPage,
         getAllNotes,
         addNote,
         updateNote,
-        removeNote
+        removeNote,
+        setCurrentPage
     } as INotesContext
 
     return (

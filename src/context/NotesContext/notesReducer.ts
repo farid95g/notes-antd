@@ -40,6 +40,13 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
             }
         }
 
+        case Notes.SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: payload
+            }
+        }
+
         default: {
             return state
         }

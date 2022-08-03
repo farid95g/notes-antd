@@ -12,11 +12,11 @@ import 'App.css'
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const { setTheme } = useContext(ThemeContext)!
-  const { getAllNotes } = useContext(NotesContext)!
+  const { currentPage, getAllNotes } = useContext(NotesContext)!
 
   useEffect(() => {
     setTheme(ls.get('theme'))
-    getAllNotes(1)
+    getAllNotes(currentPage)
 
     setTimeout(() => {
       setLoading(false)
