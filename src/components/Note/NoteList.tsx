@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Row, Pagination, Col } from 'antd'
+import { Row, Pagination, Col, Alert } from 'antd'
 import type { PaginationProps } from 'antd'
 import { Note } from 'components/Note/Note'
 import { INoteListProps, INote } from 'utils/interfaces/notes'
@@ -15,13 +15,21 @@ export const NoteList: React.FC<INoteListProps> = ({ loading }) => {
     return (
         <Row gutter={[16, 24]}>
             {
-                notes?.map((note: INote) => (
-                    <Note
-                        key={note.id}
-                        loading={loading}
-                        {...note}
-                    />
-                ))
+                notes.length
+                    ? notes?.slice(0, 4)?.map((note: INote) => (
+                        <Note
+                            key={note.id}
+                            loading={loading}
+                            {...note}
+                        />
+                    ))
+                    : <Col span={24}>
+                        <Alert
+                            message='There are no notes yet..!'
+                            type='info'
+                            showIcon
+                        />
+                    </Col>
             }
 
             {

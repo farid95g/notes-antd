@@ -1,4 +1,4 @@
-import React, { Reducer, useEffect, useReducer } from 'react'
+import React, { Reducer, useReducer } from 'react'
 import { noteService } from 'services/noteService'
 import { Notes } from 'utils/enums/notes'
 import { INote, INotesContext } from 'utils/interfaces/notes'
@@ -24,7 +24,10 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
 
     const addNote = (note: INote) => {
         noteService.add(note)
-            .then((payload) => dispatch({ type: Notes.ADD, payload }))
+            .then((note) => dispatch({
+                type: Notes.ADD,
+                payload: { note, total: state.total ? state.total + 1 : 1 }
+            }))
     }
 
     const updateNote = (note: INote) => {

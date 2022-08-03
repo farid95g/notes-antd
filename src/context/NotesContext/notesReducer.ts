@@ -16,8 +16,9 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
             return {
                 ...state,
                 notes: [
-                    ...state.notes, payload
-                ]
+                    ...state.notes, payload.note
+                ],
+                total: payload.total
             }
         }
 
