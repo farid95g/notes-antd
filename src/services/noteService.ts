@@ -2,10 +2,13 @@ import { mainService } from 'services/config'
 import { INote } from 'utils/interfaces/notes'
 
 export const noteService = {
-    getAll: () => {
+    getAll: (page: number) => {
         return mainService
-            .get('/notes')
-            .then(response => response.data)
+            .get(`/notes?_page=${page}&_limit=4`)
+            .then(response => ({
+                notes: response.data,
+                total: parseInt(response.headers['x-total-count'])
+            }))
     },
 
     add: (note: INote) => {

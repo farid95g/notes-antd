@@ -8,15 +8,17 @@ import { notesReducer } from 'context/NotesContext/notesReducer'
 export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
         notes: [],
+        total: undefined,
+        getAllNotes: () => {},
         addNote: () => {},
         updateNote: () => {},
         removeNote: () => {}
     })
 
-    useEffect(() => {
-        noteService.getAll()
+    const getAllNotes = (page: number) => {
+        noteService.getAll(page)
             .then(payload => dispatch({ type: Notes.GET_ALL, payload }))
-    }, [])
+    }
 
     const addNote = (note: INote) => {
         noteService.add(note)
@@ -35,6 +37,8 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
 
     const notesContext = {
         notes: state.notes,
+        total: state.total,
+        getAllNotes,
         addNote,
         updateNote,
         removeNote

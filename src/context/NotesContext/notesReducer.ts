@@ -8,7 +8,7 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
         case Notes.GET_ALL: {
             return {
                 ...state,
-                notes: payload
+                ...payload
             }
         }
         
