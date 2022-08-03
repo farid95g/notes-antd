@@ -144,7 +144,11 @@ body {
   font-weight: 500;
 }
 
-.ant-form-item-label > label {
+.ant-form-item-label > label,
+.ant-input,
+.ant-modal-title,
+.ant-modal-body .note > h2,
+.anticon.anticon-close.ant-modal-close-icon {
   color: var(--primary-font);
 }
 

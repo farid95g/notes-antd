@@ -36,7 +36,7 @@ export const NoteList: React.FC<INoteListProps> = ({ loading }) => {
                 total
                     ? <Col span={24} className='pagination'>
                         <Pagination
-                            current={currentPage}
+                            current={currentPage || 1}
                             onChange={onChange}
                             pageSize={4}
                             total={total}
