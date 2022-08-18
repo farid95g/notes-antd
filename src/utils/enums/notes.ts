@@ -1,5 +1,6 @@
 export enum Notes {
-    LOADING = 'LOADING',
+    IS_FETCHING = 'IS_FETCHING',
+    IS_ADDING = 'IS_ADDING',
     GET_ALL = 'GET_ALL',
     ADD = 'ADD',
     UPDATE = 'UPDATE',

@@ -10,7 +10,8 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
         notes: [],
         total: undefined,
         currentPage: 1,
-        loading: false,
+        isFetching: false,
+        isAdding: false,
         getAllNotes: () => {},
         addNote: () => {},
         updateNote: () => {},
@@ -19,7 +20,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     })
 
     const getAllNotes = (page: number) => {
-        dispatch({ type: Notes.LOADING })
+        dispatch({ type: Notes.IS_FETCHING })
         
         noteService.getAll(page)
             .then(payload => {
@@ -32,6 +33,8 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     }
 
     const addNote = (note: INote) => {
+        dispatch({ type: Notes.IS_ADDING })
+        
         noteService.add(note)
             .then((note) => dispatch({
                 type: Notes.ADD,
@@ -64,7 +67,8 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
         notes: state.notes,
         total: state.total,
         currentPage: state.currentPage,
-        loading: state.loading,
+        isFetching: state.isFetching,
+        isAdding: state.isAdding,
         getAllNotes,
         addNote,
         updateNote,

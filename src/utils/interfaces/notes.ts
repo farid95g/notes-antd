@@ -15,7 +15,8 @@ export interface INotesContext {
     notes: INote[]
     total: number | undefined,
     currentPage: number
-    loading: boolean
+    isFetching: boolean
+    isAdding: boolean
     getAllNotes: (page: number) => void
     addNote: (note: INote) => void
     updateNote: (note: INote) => void

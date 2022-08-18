@@ -5,10 +5,17 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
     const { type, payload } = action
 
     switch (type) {
-        case Notes.LOADING: {
+        case Notes.IS_FETCHING: {
             return {
                 ...state,
-                loading: true
+                isFetching: true
+            }
+        }
+        
+        case Notes.IS_ADDING: {
+            return {
+                ...state,
+                isAdding: true
             }
         }
             
@@ -16,7 +23,7 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
             return {
                 ...state,
                 ...payload,
-                loading: false
+                isFetching: false
             }
         }
         
@@ -26,7 +33,8 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
                 notes: [
                     ...state.notes, payload.note
                 ],
-                total: payload.total
+                total: payload.total,
+                isAdding: false
             }
         }
 

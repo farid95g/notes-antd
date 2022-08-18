@@ -5,7 +5,7 @@ import { NotesContext } from 'context/NotesContext/NotesContext'
 import { useForm } from 'antd/lib/form/Form'
 
 export const CreateNote: React.FC = () => {
-    const { addNote } = useContext(NotesContext)!
+    const { addNote, isAdding } = useContext(NotesContext)!
     const [form] = useForm()
 
     const onFinish = (values: { title: string, content: string }): void => {
@@ -57,9 +57,13 @@ export const CreateNote: React.FC = () => {
 
             <Form.Item wrapperCol={{ span: 24 }}>
                 <Tooltip title='Submit' placement='top'>
-                    <Button type='primary' htmlType='submit' icon={<FileDoneOutlined />} className='create-note'>
-                        Submit
-                    </Button>
+                    <Button
+                        type='primary'
+                        htmlType='submit'
+                        icon={<FileDoneOutlined />}
+                        className='create-note'
+                        loading={isAdding}
+                    >Submit</Button>
                 </Tooltip>
             </Form.Item>
         </Form>

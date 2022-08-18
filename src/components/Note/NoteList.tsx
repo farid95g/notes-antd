@@ -8,23 +8,21 @@ import { Loader } from 'components/common/Loader'
 
 export const NoteList: React.FC = () => {
     const {
-        notes, total, currentPage, loading, setCurrentPage
+        notes, total, currentPage, isFetching, setCurrentPage
     } = useContext(NotesContext)!
 
     const onChange: PaginationProps['onChange'] = page => setCurrentPage(page)
 
-    console.log(loading)
-
     return (
         <Row gutter={[16, 24]}>
             {
-                loading
+                isFetching
                     ? <Loader />
                     : notes.length
                         ? notes?.slice(0, 4)?.map((note: INote) => (
                             <Note
                                 key={note.id}
-                                loading={loading}
+                                loading={isFetching}
                                 {...note}
                             />
                         ))
@@ -38,7 +36,7 @@ export const NoteList: React.FC = () => {
             }
 
             {
-                !loading && total
+                !isFetching && total
                     ? <Col span={24} className='pagination'>
                         <Pagination
                             current={currentPage || 1}
