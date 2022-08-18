@@ -1,16 +1,37 @@
 import React from 'react'
+import { Input, Form } from 'antd'
 import { IEditProps } from 'utils/interfaces/modal'
 
 export const Edit: React.FC<IEditProps> = ({
-    title,
-    content
+    selectedNote,
+    formRef,
+    onFinish,
+    onFinishFailed
 }) => {
-    const formattedContent = content[0].toUpperCase() + content.slice(1)
-
     return (
-        <div className='note'>
-            <h2>{title}</h2>
-            <p>{formattedContent}</p>
-        </div>
+        <Form
+            layout='vertical'
+            initialValues={{
+                title: selectedNote?.title,
+                content: selectedNote?.content
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            form={formRef}
+        >
+            <Form.Item
+                name='title'
+                label='Post title'
+            >
+                <Input placeholder='Title' />
+            </Form.Item>
+
+            <Form.Item
+                name='content'
+                label='Post content'
+            >
+                <Input.TextArea rows={4} placeholder='Content'></Input.TextArea>
+            </Form.Item>
+        </Form>
     )
 }

@@ -4,10 +4,6 @@ export interface INote {
     content: string
 }
 
-export interface INoteListProps {
-    loading: boolean
-}
-
 export interface INoteProps {
     id?: string
     title: string
@@ -19,6 +15,7 @@ export interface INotesContext {
     notes: INote[]
     total: number | undefined,
     currentPage: number
+    loading: boolean
     getAllNotes: (page: number) => void
     addNote: (note: INote) => void
     updateNote: (note: INote) => void

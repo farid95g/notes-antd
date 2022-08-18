@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react'
-import { Modal as AntModal, Form, Space } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
+import { Modal as AntModal, Form, Space, Button } from 'antd'
+import { EditOutlined, FontSizeOutlined } from '@ant-design/icons'
 import { ModalContext } from 'context/ModalContext/ModalContext'
 import { Modal as ModalEnum, ModalStatus } from 'utils/enums/modal'
 import { NotesContext } from 'context/NotesContext/NotesContext'
-import { Edit } from 'components/common/Modal/Edit'
 import { View } from 'components/common/Modal/View'
+import { Edit } from 'components/common/Modal/Edit'
 import { INote } from 'utils/interfaces/notes'
 import { ThemeContext } from 'context/ThemeContext/ThemeContext'
 
@@ -50,31 +50,47 @@ export const Modal: React.FC = () => {
         toggleModal(ModalEnum.HIDE_MODAL)
     }
 
+    const footer = status === ModalStatus.EDIT ? [
+        <Button key="back"
+            onClick={cancelHandler}
+        >Cancel</Button>,
+        <Button key="submit" type="primary"
+            // loading={loading}
+            onClick={okHandler}
+        >Update</Button>
+    ] : [
+        <Button key="back"
+            onClick={cancelHandler}
+        >Cancel</Button>
+    ]
+
     return (
         <>
             <AntModal
                 title={
                     <Space size='middle'>
-                        <EditOutlined />
+                        {status === ModalStatus.VIEW
+                            ? <FontSizeOutlined />
+                            : <EditOutlined />
+                        }
                         <strong>{status === ModalStatus.VIEW ? 'View' : 'Edit'} Note</strong>
                     </Space>
                 }
-                okText='Update'
                 centered
                 visible={visibility}
-                onOk={okHandler}
                 onCancel={cancelHandler}
                 destroyOnClose={true}
                 forceRender
                 data-theme={theme}
+                footer={footer}
             >
                 {
                     status === ModalStatus.VIEW
-                        ? <Edit
+                        ? <View
                             title={selectedNote!.title}
                             content={selectedNote!.content}
                         />
-                        : <View
+                        : <Edit
                             selectedNote={selectedNote as INote}
                             formRef={form}
                             onFinish={onFinish}

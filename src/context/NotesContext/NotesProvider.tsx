@@ -10,6 +10,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
         notes: [],
         total: undefined,
         currentPage: 1,
+        loading: false,
         getAllNotes: () => {},
         addNote: () => {},
         updateNote: () => {},
@@ -18,6 +19,8 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     })
 
     const getAllNotes = (page: number) => {
+        dispatch({ type: Notes.LOADING })
+        
         noteService.getAll(page)
             .then(payload => {
                 if (payload.notes.length) {
@@ -61,6 +64,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
         notes: state.notes,
         total: state.total,
         currentPage: state.currentPage,
+        loading: state.loading,
         getAllNotes,
         addNote,
         updateNote,

@@ -10,23 +10,18 @@ import 'antd/dist/antd.min.css'
 import 'App.css'
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(true)
   const { setTheme } = useContext(ThemeContext)!
   const { currentPage, getAllNotes } = useContext(NotesContext)!
 
   useEffect(() => {
     setTheme(ls.get('theme'))
     getAllNotes(currentPage)
-
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000);
   }, [])
 
   return (
     <Layout>
       <CreateNote />
-      <NoteList loading={loading} />
+      <NoteList />
 
       <Modal />
     </Layout>

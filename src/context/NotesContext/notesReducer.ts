@@ -5,10 +5,18 @@ export const notesReducer = (state: INotesContext, action: { type: string, paylo
     const { type, payload } = action
 
     switch (type) {
+        case Notes.LOADING: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+            
         case Notes.GET_ALL: {
             return {
                 ...state,
-                ...payload
+                ...payload,
+                loading: false
             }
         }
         

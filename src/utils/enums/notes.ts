@@ -1,4 +1,5 @@
 export enum Notes {
+    LOADING = 'LOADING',
     GET_ALL = 'GET_ALL',
     ADD = 'ADD',
     UPDATE = 'UPDATE',

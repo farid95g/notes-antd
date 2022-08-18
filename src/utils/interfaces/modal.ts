@@ -8,12 +8,12 @@ export interface IModalContext {
     setSelectedNote: (type: string, selectedNote?: INote) => void
 }
 
-export interface IEditProps {
+export interface IViewProps {
     title: string
     content: string
 }
 
-export interface IViewProps {
+export interface IEditProps {
     selectedNote: INote
     formRef: any
     onFinish: (values: { title: string, content: string }) => void
