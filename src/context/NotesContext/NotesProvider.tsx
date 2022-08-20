@@ -1,5 +1,5 @@
 import React, { Reducer, useReducer } from 'react'
-import { noteService } from 'services/noteService'
+import noteService from 'services/NoteService'
 import { Notes } from 'utils/enums/notes'
 import { INote, INotesContext } from 'utils/interfaces/notes'
 import { NotesContext } from 'context/NotesContext/NotesContext'
@@ -22,7 +22,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     const getAllNotes = (page: number) => {
         dispatch({ type: Notes.IS_FETCHING })
         
-        noteService.getAll(page)
+        noteService.getAllNotes(page)
             .then(payload => {
                 if (payload.notes.length) {
                     dispatch({ type: Notes.GET_ALL, payload })
@@ -35,7 +35,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     const addNote = (note: INote): Promise<number> => {
         dispatch({ type: Notes.IS_ADDING })
         
-        return noteService.add(note)
+        return noteService.addNote(note)
             .then((response) => {
                 dispatch({
                     type: Notes.ADD,
@@ -47,12 +47,12 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     }
 
     const updateNote = (note: INote) => {
-        noteService.update(note)
+        noteService.updateNote(note)
             .then((payload) => dispatch({ type: Notes.UPDATE, payload }))
     }
 
     const removeNote = (id: string) => {
-        noteService.delete(id)
+        noteService.removeNote(id)
             .then(() => dispatch({ type: Notes.DELETE, payload: id }))
             .then(() => {
                 getAllNotes(state.currentPage)
@@ -60,7 +60,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
     }
 
     const setCurrentPage = (page: number) => {
-        noteService.getAll(page)
+        noteService.getAllNotes(page)
             .then(payload => {
                 dispatch({ type: Notes.GET_ALL, payload })
                 dispatch({ type: Notes.SET_CURRENT_PAGE, payload: page })
