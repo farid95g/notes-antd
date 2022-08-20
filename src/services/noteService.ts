@@ -14,7 +14,7 @@ export const noteService = {
     add: (note: INote) => {
         return mainService
             .post('/notes', note)
-            .then(response => response.data)
+            .then(response => ({ note: response.data, status: response.status }))
     },
 
     update: (note: INote) => {

@@ -13,7 +13,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
         isFetching: false,
         isAdding: false,
         getAllNotes: () => {},
-        addNote: () => {},
+        addNote: () => Promise.resolve(0),
         updateNote: () => {},
         removeNote: () => {},
         setCurrentPage: () => {}
@@ -32,14 +32,18 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
             })
     }
 
-    const addNote = (note: INote) => {
+    const addNote = (note: INote): Promise<number> => {
         dispatch({ type: Notes.IS_ADDING })
         
-        noteService.add(note)
-            .then((note) => dispatch({
-                type: Notes.ADD,
-                payload: { note, total: state.total ? state.total + 1 : 1 }
-            }))
+        return noteService.add(note)
+            .then((response) => {
+                dispatch({
+                    type: Notes.ADD,
+                    payload: { note: response.note, total: state.total ? state.total + 1 : 1 }
+                })
+
+                return response.status
+            })
     }
 
     const updateNote = (note: INote) => {

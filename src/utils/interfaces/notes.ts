@@ -18,7 +18,7 @@ export interface INotesContext {
     isFetching: boolean
     isAdding: boolean
     getAllNotes: (page: number) => void
-    addNote: (note: INote) => void
+    addNote: (note: INote) => Promise<number>
     updateNote: (note: INote) => void
     removeNote: (id: string) => void,
     setCurrentPage: (currentPage: number) => void

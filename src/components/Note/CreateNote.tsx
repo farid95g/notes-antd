@@ -8,14 +8,16 @@ export const CreateNote: React.FC = () => {
     const { addNote, isAdding } = useContext(NotesContext)!
     const [form] = useForm()
 
-    const onFinish = (values: { title: string, content: string }): void => {
-        addNote({
+    const onFinish = async (values: { title: string, content: string }): Promise<void> => {
+        const status = await addNote({
             title: values.title,
             content: values.content,
             id: Math.random().toString()
         })
 
-        form.resetFields()
+        if (status === 201) {
+            form.resetFields()
+        }
     }
 
     const onFinishFailed = (errorInfo: any) => {
