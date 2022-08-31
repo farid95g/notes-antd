@@ -13,13 +13,13 @@ export interface INoteProps {
 
 export interface INotesContext {
     notes: INote[]
-    total: number | undefined,
+    total: number | undefined
     currentPage: number
     isFetching: boolean
     isAdding: boolean
     getAllNotes: (page: number) => void
     addNote: (note: INote) => Promise<number>
     updateNote: (note: INote) => void
-    removeNote: (id: string) => void,
+    removeNote: (id: string) => Promise<number>
     setCurrentPage: (currentPage: number) => void
 }

@@ -3,6 +3,7 @@ import { Form, Input, Button, Row, Col, Tooltip } from 'antd'
 import { FileDoneOutlined } from '@ant-design/icons'
 import { NotesContext } from 'context/NotesContext/NotesContext'
 import { useForm } from 'antd/lib/form/Form'
+import { API_Response } from 'utils/enums/response'
 
 export const CreateNote: React.FC = () => {
     const { addNote, isAdding } = useContext(NotesContext)!
@@ -15,7 +16,7 @@ export const CreateNote: React.FC = () => {
             id: Math.random().toString()
         })
 
-        if (status === 201) {
+        if (status === API_Response.CREATED) {
             form.resetFields()
         }
     }

@@ -31,6 +31,7 @@ class NoteService extends MainService {
     return this
       .remove(id)
       .then(response => response)
+      .catch(error => error.response)
   }
 }
 

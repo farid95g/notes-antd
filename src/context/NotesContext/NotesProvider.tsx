@@ -4,6 +4,7 @@ import { Notes } from 'utils/enums/notes'
 import { INote, INotesContext } from 'utils/interfaces/notes'
 import { NotesContext } from 'context/NotesContext/NotesContext'
 import { notesReducer } from 'context/NotesContext/notesReducer'
+import { API_Response } from 'utils/enums/response'
 
 export const NotesProvider: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer<Reducer<INotesContext, any>>(notesReducer, {
@@ -15,7 +16,7 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
         getAllNotes: () => {},
         addNote: () => Promise.resolve(0),
         updateNote: () => {},
-        removeNote: () => {},
+        removeNote: () => Promise.resolve(0),
         setCurrentPage: () => {}
     })
 
@@ -51,11 +52,15 @@ export const NotesProvider: React.FC<any> = ({ children }) => {
             .then((payload) => dispatch({ type: Notes.UPDATE, payload }))
     }
 
-    const removeNote = (id: string) => {
-        noteService.removeNote(id)
-            .then(() => dispatch({ type: Notes.DELETE, payload: id }))
-            .then(() => {
-                getAllNotes(state.currentPage)
+    const removeNote = (id: string): Promise<number> => {
+        return noteService.removeNote(id)
+            .then(response => {
+                if (response.status === API_Response.OK) {
+                    dispatch({ type: Notes.DELETE, payload: id })
+                    getAllNotes(state.currentPage)
+                }
+
+                return response.status
             })
     }
 
