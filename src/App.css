@@ -1,5 +1,6 @@
 /* import font */
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 
 /* light and dark mode colors */
@@ -39,7 +40,8 @@
 }
 
 body {
-  font-family: 'Titillium Web', sans-serif;
+  /* font-family: 'Titillium Web', sans-serif; */
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -129,6 +131,7 @@ body {
 .ant-switch {
   background-image: none;
   background-color: var(--primary-bg);
+  min-width: 5rem;
 }
 
 .ant-switch-checked {
