@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^0.17.0"
+    "json-server": "^0.17.0",
+    "netlify-cli": "^11.5.1"
   }
 }
