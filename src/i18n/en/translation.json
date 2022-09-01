@@ -1,0 +1,22 @@
+{
+    "theme": {
+        "light": "Light",
+        "dark": "Dark"
+    },
+    "languages": {
+        "en": "English",
+        "az": "Azerbaijani",
+        "ru": "Russian"
+    },
+    "labels": {
+        "title": "Title",
+        "content": "Content"
+    },
+    "placeholders": {
+        "title": "Note title",
+        "content": "Note content"
+    },
+    "buttons": {
+        "save": "Save"
+    }
+}

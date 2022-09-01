@@ -4,8 +4,10 @@ import { FileDoneOutlined } from '@ant-design/icons'
 import { NotesContext } from 'context/NotesContext/NotesContext'
 import { useForm } from 'antd/lib/form/Form'
 import { API_Response } from 'utils/enums/response'
+import { useTranslation } from 'react-i18next'
 
 export const CreateNote: React.FC = () => {
+    const { t } = useTranslation()
     const { addNote, isAdding } = useContext(NotesContext)!
     const [form] = useForm()
 
@@ -39,21 +41,21 @@ export const CreateNote: React.FC = () => {
             <Row gutter={16}>
                 <Col xs={24} sm={12}>
                     <Form.Item
-                        label='Title'
+                        label={t('labels.title')}
                         name='title'
                         rules={[{ required: true, message: 'Please enter note title!' }]}
                     >
-                        <Input placeholder='Note title' />
+                        <Input placeholder={t('placeholders.title')} />
                     </Form.Item>
                 </Col>
 
                 <Col xs={24} sm={12}>
                     <Form.Item
-                        label='Content'
+                        label={t('labels.content')}
                         name='content'
                         rules={[{ required: true, message: 'Please enter note content!' }]}
                     >
-                        <Input placeholder='Note content' />
+                        <Input placeholder={t('placeholders.content')} />
                     </Form.Item>
                 </Col>
             </Row>
@@ -66,7 +68,7 @@ export const CreateNote: React.FC = () => {
                         icon={<FileDoneOutlined />}
                         className='create-note'
                         loading={isAdding}
-                    >Submit</Button>
+                    >{t('buttons.save')}</Button>
                 </Tooltip>
             </Form.Item>
         </Form>

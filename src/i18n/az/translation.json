@@ -1,0 +1,22 @@
+{
+    "theme": {
+        "light": "Açıq",
+        "dark": "Tünd"
+    },
+    "languages": {
+        "en": "İngiliscə",
+        "az": "Azərbaycanca",
+        "ru": "Rusca"
+    },
+    "labels": {
+        "title": "Ad",
+        "content": "Məzmun"
+    },
+    "placeholders": {
+        "title": "Qeyd adı",
+        "content": "Qeyd məzmunu"
+    },
+    "buttons": {
+        "save": "Yadda saxla"
+    }
+}

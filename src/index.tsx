@@ -6,6 +6,7 @@ import reportWebVitals from 'reportWebVitals'
 import { NotesProvider } from 'context/NotesContext/NotesProvider'
 import { ModalProvider } from 'context/ModalContext/ModalProvider'
 import { ThemeProvider } from 'context/ThemeContext/ThemeProvider'
+import './i18n/i18n'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

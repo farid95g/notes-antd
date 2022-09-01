@@ -1,5 +1,5 @@
 import React, { Reducer, useReducer } from 'react'
-import noteService from 'services/NoteService'
+import noteService from 'services/noteService'
 import { Notes } from 'utils/enums/notes'
 import { INote, INotesContext } from 'utils/interfaces/notes'
 import { NotesContext } from 'context/NotesContext/NotesContext'
