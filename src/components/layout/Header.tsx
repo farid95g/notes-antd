@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
                     <Space size='middle'>
                         <Switch
                             checkedChildren={t('theme.light')}
-                            unCheckedChildren='Dark'
+                            unCheckedChildren={t('theme.dark')}
                             checked={theme === 'dark' ? true : false}
                             style={{ width: '4.2rem' }}
                             onChange={value => onThemeChange(value)}
